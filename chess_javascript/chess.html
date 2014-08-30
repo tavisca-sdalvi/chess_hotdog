@@ -2,21 +2,23 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="main.css"></style>
+	<script src="js.js">
+	</script>
 </head>
-<body>
+<body onload="myFunction()">
 	<div>
 		uwiwh
 	<center>
 
 		<div class="outerdiv">
 			<div class="rowdiv">
-				<div id="11" class="darkgrid">
-				
+				<div id="11" class="darkgrid"  ondrop="drop(event)" ondragover="allowDrop(event)">
+				<img id="ss" draggable="true" ondragstart="drag(event)" />
 				</div>
-				<div id="12" class="whitegrid">
-					m
+				<div id="12" class="whitegrid"  ondrop="drop(event)" ondragover="allowDrop(event)">
+					
 				</div>
-				<div id="13" class="darkgrid">
+				<div id="13" class="darkgrid" ondrop="drop(event)" ondragover="allowDrop(event)">
 					s
 				</div>
 				<div id="14" class="whitegrid">
@@ -37,13 +39,13 @@
 			</div>
 			<div class="rowdiv">
 				
-				<div id="21" class="whitegrid">
+				<div id="21" class="whitegrid" ondrop="drop(event)" ondragover="allowDrop(event)">
 					m
 				</div>
-				<div id="22" class="darkgrid">
+				<div id="22" class="darkgrid" ondrop="drop(event)" ondragover="allowDrop(event)">
 					s
 				</div>
-				<div id="23" class="whitegrid">
+				<div id="23" class="whitegrid" ondrop="drop(event)" ondragover="allowDrop(event)">
 					m
 				</div>
 				<div id="24" class="darkgrid">
@@ -236,6 +238,7 @@
 
 		</div>
 	</center>
+	win
 </div>
 </body>
 </html>
