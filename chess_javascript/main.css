@@ -1,8 +1,7 @@
 .darkgrid
 {
-	width:80px;
-	height: 80px;
-	
+	width:75px;
+	height:75px;
 	border: 2px solid black;
 	background-color: grey;
 	float:left;
@@ -11,10 +10,9 @@
 
 .whitegrid
 {
-	width:80px;
-	height:80px;
+	width:75px;
+	height:75px;
 	background-color: white;
 	float:left;
-	
 	border: 2px solid grey;
 }
