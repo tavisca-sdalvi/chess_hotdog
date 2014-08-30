@@ -16,7 +16,7 @@ pawn_white="<img src='images/pawn_white.png'>";
 
 function abc()
 {
-
+alert("hello");
 document.getElementById("11").innerHTML=rook_black;
 document.getElementById("12").innerHTML=knight_black;
 document.getElementById("13").innerHTML=bishop_black;
