@@ -18,7 +18,6 @@ function abc()
 {
 alert("hello");
 document.getElementById("11").innerHTML=rook_black;
-document.getElementById("11").setAttribute("onclick","myglobal(this)");
 document.getElementById("12").innerHTML=knight_black;
 document.getElementById("13").innerHTML=bishop_black;
 document.getElementById("14").innerHTML=queen_black;
@@ -45,10 +44,12 @@ document.getElementById("88").innerHTML=rook_white;
 for(i=1;i<=8;i++)
 {
 document.getElementById("7"+i).innerHTML=pawn_white;
+document.getElementById("7"+i).setAttribute("onclick","myglobal(this)");
+document.getElementById("7"+i).style.cursor = "pointer";
 }
 
 document.getElementById("44").innerHTML=rook_white;
- document.getElementById("44").style.cursor = "pointer";
+document.getElementById("44").style.cursor = "pointer";
 
 }
 
