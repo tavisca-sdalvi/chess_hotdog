@@ -132,6 +132,48 @@ function rmoves(divx, divy,tds)
 		}
 	}
 
+	for(i=(divx+1);i<=8;i++)
+	{
+		//alert("in for");
+		if(isEmpty(i,divy))
+		{
+			highlight(i,divy);
+		}
+		else
+		{
+			if(isFriend(i,divy,tds))
+			{
+				break;
+			}
+			else
+			{
+				highlight(i,divy);
+				break;
+			}
+		}
+	}
+
+	for(i=(divx-1);i>0;i--)
+	{
+		//alert("in for");
+		if(isEmpty(i,divy))
+		{
+			highlight(i,divy);
+		}
+		else
+		{
+			if(isFriend(i,divy,tds))
+			{
+				break;
+			}
+			else
+			{
+				highlight(i,divy);
+				break;
+			}
+		}
+	}
+
 
 	
 }
