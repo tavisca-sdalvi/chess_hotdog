@@ -227,7 +227,50 @@ highlight(i,j);
 break;
 }
 }
-}}
+}
+//for vertical
+for(i=(divx+1),j=(divy-1);i<=8,j>0;i++,j--)
+	{
+		//alert("in for");
+		if(isEmpty(i,j))
+		{
+			highlight(i,j);
+		}
+		else
+		{
+			if(isFriend(i,j,tds))
+			{
+				break;
+			}
+			else
+			{
+				highlight(i,j);
+				break;
+			}
+		}
+	}
+
+	for(i=(divx-1),j=(divy+1);i>0,j<=8;i--,j++)
+	{
+		//alert("in for");
+		if(isEmpty(i,j))
+		{
+			highlight(i,j);
+		}
+		else
+		{
+			if(isFriend(i,j,tds))
+			{
+				break;
+			}
+			else
+			{
+				highlight(i,j);
+				break;
+			}
+		}
+	}
+}
 
 
 
