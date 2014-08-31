@@ -48,6 +48,7 @@ document.getElementById("7"+i).innerHTML=pawn_white;
 }
 
 document.getElementById("44").innerHTML=rook_white;
+document.getElementById("32").innerHTML=bishop_white;
  document.getElementById("44").style.cursor = "pointer";
 
 }
@@ -77,6 +78,13 @@ function myMove(tds,divx,divy)
 		alert("in if");
 		rmoves(divx,divy,tds);
 	}
+		//for bishop
+if(tds=="bw"|tds=="bb")
+{
+alert("in if");
+bmoves(divx,divy,tds);
+}
+
 
 	
 
@@ -177,6 +185,51 @@ function rmoves(divx, divy,tds)
 
 	
 }
+function bmoves(divx, divy,tds)
+{
+//alert("in rmoves");
+for(i=(divx+1),j=(divy+1);i<=8,j<=8;i++,j++)
+{
+alert("in for");
+if(isEmpty(i,j))
+{
+highlight(i,j);
+}
+else
+{
+if(isFriend(i,j,tds))
+{
+break;
+}
+else
+{
+highlight(i,j);
+break;
+}
+}
+}
+for(i=(divx-1),j=(divy-1);i>0,j>0;i--,j--)
+{
+alert("in for");
+if(isEmpty(i,j))
+{
+highlight(i,j);
+}
+else
+{
+if(isFriend(i,j,tds))
+{
+break;
+}
+else
+{
+highlight(i,j);
+break;
+}
+}
+}}
+
+
 
 function isEmpty (divx,i)
 {
