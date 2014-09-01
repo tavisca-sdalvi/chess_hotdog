@@ -48,10 +48,10 @@ document.getElementById("7"+i).setAttribute("onclick","myglobal(this)");
 document.getElementById("7"+i).style.cursor = "pointer";
 }
 
-document.getElementById("44").innerHTML=rook_white;
+//document.getElementById("44").innerHTML=rook_white;
 
-document.getElementById("32").innerHTML=bishop_white;
- document.getElementById("44").style.cursor = "pointer";
+//document.getElementById("32").innerHTML=bishop_white;
+ //document.getElementById("44").style.cursor = "pointer";
 
 
 }
@@ -87,12 +87,30 @@ if(tds=="bw"|tds=="bb")
 alert("in if");
 bmoves(divx,divy,tds);
 }
-
-
-	
-
-
-
+//for queen
+	if(tds=="qw"|tds=="qb")
+	{
+		//alert("in if");
+		rmoves(divx,divy,tds);
+		bmoves(divx,divy,tds);
+	}
+	//for knight
+	if(tds=="hw"|tds=="hb")
+	{
+		alert("in hmoves");
+		hmoves(divx,divy,tds);
+	}
+	//for pawn
+	if(tds=="pb")
+	{
+		alert("in pmoves");
+		pbmoves(divx,divy,tds);
+	}
+	if(tds=="pw")
+	{
+		alert("in pmoves");
+		pwmoves(divx,divy,tds);
+	}
 }
 
 function rmoves(divx, divy,tds)
@@ -188,6 +206,7 @@ function rmoves(divx, divy,tds)
 
 	
 }
+//for bishop 
 function bmoves(divx, divy,tds)
 {
 //alert("in rmoves");
@@ -273,6 +292,106 @@ for(i=(divx+1),j=(divy-1);i<=8,j>0;i++,j--)
 			}
 		}
 	}
+	//for knight
+	function hmoves(divx, divy,tds)
+{
+	alert("in hmove");
+	if(((divx-2)>0)&&((divx-2)<=8)&&((divy+1)>0)&&((divy+1)<=8))
+	{
+		if(isEmpty(divx-2,divy+1))
+		{
+			highlight(divx-2,divy+1);
+		}
+		else if(!isFriend(divx-2,divy+1,tds))
+		{
+highlight(divx-2,divy+1);
+        }
+    }	
+    if(((divx-1)>0)&&((divx-1)<=8)&&((divy+2)>0)&&((divy+2)<=8))
+    {
+    	if(isEmpty(divx-1,divy+2))
+		{
+			highlight(divx-1,divy+2);
+		}
+		else if(!isFriend(divx-1,divy+2,tds))
+		{
+highlight(divx-1,divy+2);
+        }
+
+    }
+    if(((divx+1)>0)&&((divx+1)<=8)&&((divy+2)>0)&&((divy+2)<=8))
+    {
+    	if(isEmpty(divx+1,divy+2))
+		{
+			highlight(divx+1,divy+2);
+		}
+		else if(!isFriend(divx+1,divy+2,tds))
+		{
+highlight(divx+1,divy+2);
+        }
+
+    }
+    if(((divx+2)>0)&&((divx+2)<=8)&&((divy+1)>0)&&((divy+1)<=8))
+    {
+    	if(isEmpty(divx+2,divy+1))
+		{
+			highlight(divx+2,divy+1);
+		}
+		else if(!isFriend(divx+2,divy+1,tds))
+		{
+highlight(divx+2,divy+1);
+        }
+
+    }
+    if(((divx+2)>0)&&((divx+2)<=8)&&((divy-1)>0)&&((divy-1)<=8))
+    {
+    	if(isEmpty(divx+2,divy-1))
+		{
+			highlight(divx+2,divy-1);
+		}
+		else if(!isFriend(divx+2,divy-1,tds))
+		{
+highlight(divx+2,divy-1);
+        }
+
+    }
+    if(((divx+1)>0)&&((divx+1)<=8)&&((divy-2)>0)&&((divy-2)<=8))
+    {
+    	if(isEmpty(divx+1,divy-2))
+		{
+			highlight(divx+1,divy-2);
+		}
+		else if(!isFriend(divx+1,divy-2,tds))
+		{
+highlight(divx+1,divy-2);
+        }
+
+    }
+    if(((divx-1)>0)&&((divx-1)<=8)&&((divy-2)>0)&&((divy-2)<=8))
+    {
+    	if(isEmpty(divx-1,divy-2))
+		{
+			highlight(divx-1,divy-2);
+		}
+		else if(!isFriend(divx-1,divy-2,tds))
+		{
+highlight(divx-1,divy-2);
+        }
+
+    }
+    if(((divx-2)>0)&&((divx-2)<=8)&&((divy-1)>0)&&((divy-1)<=8))
+    {
+    	if(isEmpty(divx-2,divy-1))
+		{
+			highlight(divx-2,divy-1);
+		}
+		else if(!isFriend(divx-2,divy-1,tds))
+		{
+highlight(divx-2,divy-1);
+        }
+
+    }
+}
 }
 
 
