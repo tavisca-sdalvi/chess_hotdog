@@ -18,28 +18,79 @@ function abc()
 {
 alert("hello");
 document.getElementById("11").innerHTML=rook_black;
+document.getElementById("11").setAttribute("onclick","myglobal(this)");
+document.getElementById("11").style.cursor = "pointer";
+
 document.getElementById("12").innerHTML=knight_black;
+document.getElementById("12").setAttribute("onclick","myglobal(this)");
+document.getElementById("12").style.cursor = "pointer";
+
 document.getElementById("13").innerHTML=bishop_black;
+document.getElementById("13").setAttribute("onclick","myglobal(this)");
+document.getElementById("13").style.cursor = "pointer";
+
 document.getElementById("14").innerHTML=queen_black;
+document.getElementById("14").setAttribute("onclick","myglobal(this)");
+document.getElementById("14").style.cursor = "pointer";
+
 document.getElementById("15").innerHTML=king_black;
+document.getElementById("15").setAttribute("onclick","myglobal(this)");
+document.getElementById("15").style.cursor = "pointer";
+
 document.getElementById("16").innerHTML=bishop_black;
+document.getElementById("16").setAttribute("onclick","myglobal(this)");
+document.getElementById("16").style.cursor = "pointer";
+
 document.getElementById("17").innerHTML=knight_black;
+document.getElementById("17").setAttribute("onclick","myglobal(this)");
+document.getElementById("17").style.cursor = "pointer";
+
 document.getElementById("18").innerHTML=rook_black;
+document.getElementById("18").setAttribute("onclick","myglobal(this)");
+document.getElementById("18").style.cursor = "pointer";
+
 
 for(i=1;i<=8;i++)
 {
 document.getElementById("2"+i).innerHTML=pawn_black;
+document.getElementById("2"+i).setAttribute("onclick","myglobal(this)");
+document.getElementById("2"+i).style.cursor = "pointer";
+
 }
 
 
 document.getElementById("81").innerHTML=rook_white;
+document.getElementById("81").setAttribute("onclick","myglobal(this)");
+document.getElementById("81").style.cursor = "pointer";
+
 document.getElementById("82").innerHTML=knight_white;
+document.getElementById("82").setAttribute("onclick","myglobal(this)");
+document.getElementById("82").style.cursor = "pointer";
+
 document.getElementById("83").innerHTML=bishop_white;
+document.getElementById("83").setAttribute("onclick","myglobal(this)");
+document.getElementById("83").style.cursor = "pointer";
+
 document.getElementById("84").innerHTML=queen_white;
+document.getElementById("84").setAttribute("onclick","myglobal(this)");
+document.getElementById("84").style.cursor = "pointer";
+
 document.getElementById("85").innerHTML=king_white;
-document.getElementById("86").innerHTML=bishop_white
+document.getElementById("85").setAttribute("onclick","myglobal(this)");
+document.getElementById("85").style.cursor = "pointer";
+
+document.getElementById("86").innerHTML=bishop_white;
+document.getElementById("86").setAttribute("onclick","myglobal(this)");
+document.getElementById("86").style.cursor = "pointer";
+
 document.getElementById("87").innerHTML=knight_white;
+document.getElementById("87").setAttribute("onclick","myglobal(this)");
+document.getElementById("87").style.cursor = "pointer";
+
 document.getElementById("88").innerHTML=rook_white;
+document.getElementById("88").setAttribute("onclick","myglobal(this)");
+document.getElementById("88").style.cursor = "pointer";
+
 
 for(i=1;i<=8;i++)
 {
@@ -48,10 +99,14 @@ document.getElementById("7"+i).setAttribute("onclick","myglobal(this)");
 document.getElementById("7"+i).style.cursor = "pointer";
 }
 
-//document.getElementById("44").innerHTML=rook_white;
 
-//document.getElementById("32").innerHTML=bishop_white;
- //document.getElementById("44").style.cursor = "pointer";
+document.getElementById("44").innerHTML=rook_white;
+document.getElementById("44").setAttribute("onclick","myglobal(this)");
+document.getElementById("44").style.cursor = "pointer";
+
+
+document.getElementById("32").innerHTML=bishop_white;
+ 
 
 
 }
@@ -61,21 +116,53 @@ document.getElementById("7"+i).style.cursor = "pointer";
 function myglobal(obj)
 {
 alert("global");
-var divid=obj.id;
+divid=obj.id;
 alert(divid);
 var divx=parseInt(divid.charAt(0));
 var divy=parseInt(divid.charAt(1));
 
 var tds=document.getElementById(divid).firstChild.name;
 //alert(tds);
-alert("in global");
+//alert("in global");
 myMove(tds,divx,divy);
 alert("okay");
 }
 
+function myput(obj)
+{
+	//alert("hello");
+	var target_divid=obj.id;
+	//alert(target_divid);
+	var divx=parseInt(target_divid.charAt(0));
+	var divy=parseInt(target_divid.charAt(1));
+	
+		document.getElementById(target_divid).innerHTML=document.getElementById(divid).innerHTML;
+		document.getElementById(divid).innerHTML="";
+		//document.getElementById(divid).setAttribute();
+		//document.getElementById(target_divid).setAttribute("onclick","myglobal(this)");
+		var tempID="";
+		for(i=1;i<=8;i++)
+		{
+			for(j=1;j<=8;j++)
+				{
+					tempID=""+i+j;
+				document.getElementById(tempID).removeAttribute("style");
+				document.getElementById(tempID).removeAttribute("onclick");	
+				if(!isEmpty(i,j))
+				{
+				document.getElementById(tempID).setAttribute("onclick","myglobal(this)");
+				}
+				
+		}
+
+		}
+
+
+}
+
 function myMove(tds,divx,divy)
 {
-	alert("in myMove");
+	//alert("in myMove");
 	if(tds=="rw"|tds=="rb")
 	{
 		alert("in if");
@@ -84,7 +171,7 @@ function myMove(tds,divx,divy)
 		//for bishop
 if(tds=="bw"|tds=="bb")
 {
-alert("in if");
+//alert("in if");
 bmoves(divx,divy,tds);
 }
 //for queen
@@ -115,11 +202,11 @@ bmoves(divx,divy,tds);
 
 function rmoves(divx, divy,tds)
 {
-	alert("in rmoves");
+	//alert("in rmoves");
 	//for horizontal right
 	for(i=(divy+1);i<=8;i++)
 	{
-		alert("in for");
+		//alert("in for");
 		if(isEmpty(divx,i))
 		{
 			highlight(divx,i);
@@ -141,7 +228,7 @@ function rmoves(divx, divy,tds)
 	//for horizontal left
 	for(i=(divy-1);i>0;i--)
 	{
-		alert("in reverse for");
+		//alert("in reverse for");
 		if(isEmpty(divx,i))
 		{
 
@@ -210,9 +297,10 @@ function rmoves(divx, divy,tds)
 function bmoves(divx, divy,tds)
 {
 //alert("in rmoves");
-for(i=(divx+1),j=(divy+1);i<=8,j<=8;i++,j++)
+for(i=(divx+1),j=(divy+1);i<=8 && j<=8;i++,j++)
 {
-alert("in for");
+alert(i);
+alert(j);
 if(isEmpty(i,j))
 {
 highlight(i,j);
@@ -225,14 +313,17 @@ break;
 }
 else
 {
-highlight(i,j);
+highlight(i,j); 
 break;
 }
 }
 }
-for(i=(divx-1),j=(divy-1);i>0,j>0;i--,j--)
+for(i=(divx-1),j=(divy-1);i>0 && j>0;i--,j--)
 {
-alert("in for");
+//alert("in for");
+alert(i);
+alert(j);
+
 if(isEmpty(i,j))
 {
 highlight(i,j);
@@ -251,30 +342,37 @@ break;
 }
 }
 //for vertical
-for(i=(divx+1),j=(divy-1);i<=8,j>0;i++,j--)
+alert("in 3rd for");
+for(k=(divx+1),l=(divy-1);k<=8 && l>0;k++,l--)
 	{
+		alert(k);
+alert(l);
+
 		//alert("in for");
-		if(isEmpty(i,j))
+		if(isEmpty(k,l))
 		{
-			highlight(i,j);
+			highlight(k,l);
 		}
 		else
 		{
-			if(isFriend(i,j,tds))
+			if(isFriend(k,l,tds))
 			{
 				break;
 			}
 			else
 			{
-				highlight(i,j);
+				highlight(k,l);
 				break;
 			}
 		}
 	}
-
-	for(i=(divx-1),j=(divy+1);i>0,j<=8;i--,j++)
+alert("in 4th for");
+	for(i=(divx-1),j=(divy+1);i>0 && j<=8;i--,j++)
 	{
 		//alert("in for");
+		alert(i);
+alert(j);
+
 		if(isEmpty(i,j))
 		{
 			highlight(i,j);
@@ -398,18 +496,18 @@ highlight(divx-2,divy-1);
 
 function isEmpty (divx,i)
 {
-	alert("in isempty");
+	//alert("in isempty");
 	var divstr=""+divx+i;
-	var imgvar=document.getElementById(divstr).firstChild.name;
-	alert(imgvar);
+	var imgvar=document.getElementById(divstr).getElementsByTagName("img")[0];
+	//alert(imgvar);
 	if(imgvar)
 	{
-		alert("imgvar has some value");
+		//alert("imgvar has some value");
 		return false;
 	}
 	else
 	{
-		alert("imgvar has no value");
+		//alert("imgvar has no value");
 			return true;
 	}
 		
@@ -418,7 +516,7 @@ function isEmpty (divx,i)
 function isFriend(divx,i,tds)
 {
 	var divstr=""+divx+i;
-	var coin_name=document.getElementById(divstr).firstChild.name;
+	var coin_name=document.getElementById(divstr).getElementsByTagName("img")[0].name;
 	var color=tds.charAt(1);
 	var comparing_color=coin_name.charAt(1);
 	if(color==comparing_color)
@@ -433,9 +531,14 @@ function isFriend(divx,i,tds)
 
 
 }
+
+
 function highlight(divx,i)
 {
-	alert("in high");
+	//alert("in high");
 	var divstr=""+divx+i;
 	document.getElementById(divstr).setAttribute("style","border:2px solid red;");
+	document.getElementById(divstr).setAttribute("onclick","myput(this)");
 }
+
+
