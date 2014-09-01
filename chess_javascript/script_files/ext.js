@@ -100,7 +100,7 @@ document.getElementById("7"+i).style.cursor = "pointer";
 }
 
 
-document.getElementById("44").innerHTML=rook_white;
+document.getElementById("44").innerHTML=king_white;
 document.getElementById("44").setAttribute("onclick","myglobal(this)");
 document.getElementById("44").style.cursor = "pointer";
 
@@ -122,7 +122,7 @@ var divx=parseInt(divid.charAt(0));
 var divy=parseInt(divid.charAt(1));
 
 var tds=document.getElementById(divid).firstChild.name;
-//alert(tds);
+alert(tds);
 //alert("in global");
 myMove(tds,divx,divy);
 alert("okay");
@@ -162,7 +162,7 @@ function myput(obj)
 
 function myMove(tds,divx,divy)
 {
-	//alert("in myMove");
+	alert("in myMove");
 	if(tds=="rw"|tds=="rb")
 	{
 		alert("in if");
@@ -197,6 +197,11 @@ bmoves(divx,divy,tds);
 	{
 		alert("in pmoves");
 		pwmoves(divx,divy,tds);
+	}
+	if(tds=="kw" | tds=="kb")
+	{
+		alert("in kmoves");
+		kmoves(divx,divy,tds);
 	}
 }
 
@@ -567,7 +572,44 @@ highlight(divx-2,divy-1);
 }
 }
 
+function kmoves(divx,divy,tds)
+{
+	alert("in kmoves");
+	for(i=divx-1;i<=divx+1;i++)
+	{
+		for(j=divy-1;j<=divy+1;j++)
+		{
+			if(i==divx && j==divy)
+				continue;
+			else
+			{
+				if(i==0 | j==0 |i==9|j==9)
+				{
+					alert("i=0 or j=0");
+					continue;
+				}
+				else
+				{
+					if(isEmpty(i,j))
+					{
+						alert("i,j is empty");
+						highlight(i,j);
+					}
+					else
+						if(!isFriend(i,j,tds))
+						{
+							alert("i,j is enemy");
+						highlight(i,j);
+						
+						}
+				}
+			}
 
+
+				//highlight(i,j);
+		}
+	}
+}
 
 function isEmpty (divx,i)
 {
