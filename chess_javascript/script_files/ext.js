@@ -200,6 +200,81 @@ bmoves(divx,divy,tds);
 	}
 }
 
+function pbmoves(divx,divy,tds)
+{
+if(divx=="2")
+{
+	if(isEmpty(divx+1,divy))
+	{
+	highlight(divx+1,divy);
+    }
+    
+    if((isEmpty(divx+2,divy))&&(isEmpty(divx+1,divy)))
+    {
+	highlight(divx+2,divy);
+    }
+   }  
+  else
+  {
+  	if(isEmpty(divx+1,divy))
+  	{
+  		highlight(divx+1,divy);
+  	}
+  }
+  if(((divx+1)>0)&&((divx+1)<=8)&&((divy-1)>0)&&((divy-1)<=8))
+  {
+  if(!(isEmpty(divx+1,divy-1)) && (!isFriend(divx+1,divy-1,tds)))
+  {
+  	highlight(divx+1,divy-1);
+  }
+}
+   if(((divx+1)>0)&&((divx+1)<=8)&&((divy+1)>0)&&((divy+1)<=8))
+   {
+   if(!(isEmpty(divx+1,divy+1)) && (!isFriend(divx+1,divy+1,tds)))
+  {
+  	highlight(divx+1,divy+1);
+  }
+}
+}
+//for pawns white
+function pwmoves(divx,divy,tds)
+{
+if(divx=="7")
+{
+	if(isEmpty(divx-1,divy))
+	{
+	highlight(divx-1,divy);
+    }
+    
+    if((isEmpty(divx-2,divy))&&(isEmpty(divx-1,divy)))
+    {
+	highlight(divx-2,divy);
+    }
+   }  
+  else
+  {
+  	if(isEmpty(divx-1,divy))
+  	{
+  		highlight(divx-1,divy);
+  	}
+  }
+  if(((divx-1)>0)&&((divx-1)<=8)&&((divy-1)>0)&&((divy-1)<=8))
+  {
+  if((isEmpty(divx-1,divy-1)) | (!isFriend(divx-1,divy-1,tds)))
+  {
+  	highlight(divx-1,divy-1);
+  }
+}
+   if(((divx-1)>0)&&((divx-1)<=8)&&((divy+1)>0)&&((divy+1)<=8))
+   {
+   if((isEmpty(divx-1,divy-1)) | (!isFriend(divx+1,divy+1,tds)))
+  {
+  	highlight(divx-1,divy+1);
+  }
+}
+}
+
+
 function rmoves(divx, divy,tds)
 {
 	//alert("in rmoves");
