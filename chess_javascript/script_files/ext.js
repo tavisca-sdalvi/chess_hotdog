@@ -265,14 +265,14 @@ if(divx=="7")
   }
   if(((divx-1)>0)&&((divx-1)<=8)&&((divy-1)>0)&&((divy-1)<=8))
   {
-  if((isEmpty(divx-1,divy-1)) | (!isFriend(divx-1,divy-1,tds)))
+  if(!(isEmpty(divx-1,divy-1)) && (!isFriend(divx-1,divy-1,tds)))
   {
   	highlight(divx-1,divy-1);
   }
 }
    if(((divx-1)>0)&&((divx-1)<=8)&&((divy+1)>0)&&((divy+1)<=8))
    {
-   if((isEmpty(divx-1,divy+1)) | (!isFriend(divx-1,divy+1,tds)))
+   if(!(isEmpty(divx-1,divy+1)) && (!isFriend(divx-1,divy+1,tds)))
   {
   	highlight(divx-1,divy+1);
   }
