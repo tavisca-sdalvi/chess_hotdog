@@ -272,7 +272,7 @@ if(divx=="7")
 }
    if(((divx-1)>0)&&((divx-1)<=8)&&((divy+1)>0)&&((divy+1)<=8))
    {
-   if((isEmpty(divx-1,divy-1)) | (!isFriend(divx+1,divy+1,tds)))
+   if((isEmpty(divx-1,divy+1)) | (!isFriend(divx-1,divy+1,tds)))
   {
   	highlight(divx-1,divy+1);
   }
@@ -470,8 +470,9 @@ alert(j);
 			}
 		}
 	}
+}
 	//for knight
-	function hmoves(divx, divy,tds)
+function hmoves(divx, divy,tds)
 {
 	alert("in hmove");
 	if(((divx-2)>0)&&((divx-2)<=8)&&((divy+1)>0)&&((divy+1)<=8))
@@ -569,7 +570,6 @@ highlight(divx-2,divy-1);
         }
 
     }
-}
 }
 
 function kmoves(divx,divy,tds)
