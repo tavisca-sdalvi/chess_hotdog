@@ -115,6 +115,23 @@ document.getElementById("32").innerHTML=bishop_white;
 
 function myglobal(obj)
 {
+	var tempID="";
+		for(i=1;i<=8;i++)
+		{
+			for(j=1;j<=8;j++)
+				{
+					tempID=""+i+j;
+				document.getElementById(tempID).removeAttribute("style");
+				document.getElementById(tempID).removeAttribute("onclick");	
+				if(!isEmpty(i,j))
+				{
+				document.getElementById(tempID).setAttribute("onclick","myglobal(this)");
+				}
+				
+		}
+
+		}
+
 alert("global");
 divid=obj.id;
 alert(divid);
