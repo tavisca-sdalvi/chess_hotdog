@@ -112,6 +112,31 @@ document.getElementById("32").innerHTML=bishop_white;
 }
 
 
+var arr = ["44-24","21-41","23-32","75-65","65-55","27-37"];
+
+var replay = function(f) {
+	alert("in replay");
+  // var s = document.getElementById("div1"); //you could pass this element as a parameter as well
+   f = f || 0;
+   if(f < arr.length) {
+      str2=""+arr[f];
+alert("in main loop");
+		var res1 = str2.substring(0,2);
+		var res2 = str2.substring(3,5);
+
+			var xyx=document.getElementById(res1).innerHTML;
+			document.getElementById(res2).innerHTML=xyx;
+			document.getElementById(res1).innerHTML="";
+
+      f++;
+      if(f==arr.length)
+         alert("over");
+      //create a pause of 2 seconds.
+      setTimeout(function() { replay(f) }, 2000);          
+   }
+}
+
+
 
 function myglobal(obj)
 {
