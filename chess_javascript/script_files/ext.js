@@ -146,7 +146,7 @@ function myglobal(obj)
 
 		}
 
-alert("global");
+//alert("global");
 
 //alert("global");
 
@@ -177,6 +177,8 @@ function myput(obj)
 	////alert(target_divid);
 	var divx=parseInt(target_divid.charAt(0));
 	var divy=parseInt(target_divid.charAt(1));
+
+	var oldname=document.getElementById(target_divid).firstChild.name;
 	
 		document.getElementById(target_divid).innerHTML=document.getElementById(divid).innerHTML;
 		document.getElementById(divid).innerHTML="";
@@ -196,6 +198,13 @@ function myput(obj)
 				
 		}
 
+		}
+		if(oldname=="kw"){
+			alert("Black win");
+		}
+		else if(oldname=="kb")
+		{
+			alert("white win");
 		}
 
 
