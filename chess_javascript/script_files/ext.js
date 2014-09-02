@@ -104,7 +104,7 @@ document.getElementById("7"+i).style.cursor = "pointer";
 }
 
 
-var arr = ["24-34","21-41","23-32","75-65","65-55","27-37"];
+var arr = ["44-24","21-41","23-32","75-65","65-55","27-37"];
 
 var replay = function(f) {
 	alert("in replay");
@@ -124,7 +124,7 @@ alert("in main loop");
       if(f==arr.length)
          alert("over");
       //create a pause of 2 seconds.
-      setTimeout(function() { replay(f) }, 1000);          
+      setTimeout(function() { replay(f) }, 2000);          
    }
 }
 
@@ -142,7 +142,7 @@ function myglobal(obj)
 				document.getElementById(tempID).removeAttribute("style");
 				
 				
-				}
+		}
 
 		}
 
@@ -158,12 +158,10 @@ var divy=parseInt(divid.charAt(1));
 var tds=document.getElementById(divid).firstChild.name;
 colorType=tds.charAt(1);
 
-if(validateMe=="m" || validateMe !=colorType)
+if(validatecolor=="m" || validatecolor !=colorType)
 {
-//alert(tds);
-////alert("in global");
 myMove(tds,divx,divy);
-//alert("okay");
+
 }
 else
 {
@@ -182,8 +180,7 @@ function myput(obj)
 	
 		document.getElementById(target_divid).innerHTML=document.getElementById(divid).innerHTML;
 		document.getElementById(divid).innerHTML="";
-		//document.getElementById(divid).setAttribute();
-		//document.getElementById(target_divid).setAttribute("onclick","myglobal(this)");
+		validatecolor=colorType;
 		var tempID="";
 		for(i=1;i<=8;i++)
 		{
@@ -197,7 +194,7 @@ function myput(obj)
 				document.getElementById(tempID).setAttribute("onclick","myglobal(this)");
 				}
 				
-				}
+		}
 
 		}
 
