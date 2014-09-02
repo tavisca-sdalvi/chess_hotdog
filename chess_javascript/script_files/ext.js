@@ -12,9 +12,11 @@ king_white="<img src='images/king_white.png' name='kw'>";
 queen_white="<img src='images/queen_white.png' name='qw'>";
 pawn_white="<img src='images/pawn_white.png' name='pw'>";
 
+var colorType="m";
+var validatecolor="m";
 
 
-function abc()
+function init()
 {
 //alert("hello");
 document.getElementById("11").innerHTML=rook_black;
@@ -99,16 +101,6 @@ document.getElementById("7"+i).setAttribute("onclick","myglobal(this)");
 document.getElementById("7"+i).style.cursor = "pointer";
 }
 
-
-document.getElementById("44").innerHTML=king_white;
-document.getElementById("44").setAttribute("onclick","myglobal(this)");
-document.getElementById("44").style.cursor = "pointer";
-
-
-document.getElementById("32").innerHTML=bishop_white;
- 
-
-
 }
 
 
@@ -148,13 +140,9 @@ function myglobal(obj)
 				{
 					tempID=""+i+j;
 				document.getElementById(tempID).removeAttribute("style");
-				document.getElementById(tempID).removeAttribute("onclick");	
-				if(!isEmpty(i,j))
-				{
-				document.getElementById(tempID).setAttribute("onclick","myglobal(this)");
-				}
 				
-		}
+				
+				}
 
 		}
 
@@ -168,10 +156,20 @@ var divx=parseInt(divid.charAt(0));
 var divy=parseInt(divid.charAt(1));
 
 var tds=document.getElementById(divid).firstChild.name;
+colorType=tds.charAt(1);
+
+if(validateMe=="m" || validateMe !=colorType)
+{
 //alert(tds);
 ////alert("in global");
 myMove(tds,divx,divy);
 //alert("okay");
+}
+else
+{
+	alert("another opponent's turn");
+}
+
 }
 
 function myput(obj)
@@ -199,7 +197,7 @@ function myput(obj)
 				document.getElementById(tempID).setAttribute("onclick","myglobal(this)");
 				}
 				
-		}
+				}
 
 		}
 
