@@ -14,7 +14,7 @@ pawn_white="<img src='images/pawn_white.png' name='pw'>";
 
 var colorType="m";
 var validatecolor="m";
-
+var move=[];
 
 function init()
 {
@@ -94,8 +94,7 @@ document.getElementById("88").setAttribute("onclick","myglobal(this)");
 document.getElementById("88").style.cursor = "pointer";
 
 
-for(i=1;i<=8;i++)
-{
+for(i=1;i<=8;i++){
 document.getElementById("7"+i).innerHTML=pawn_white;
 document.getElementById("7"+i).setAttribute("onclick","myglobal(this)");
 document.getElementById("7"+i).style.cursor = "pointer";
@@ -104,40 +103,12 @@ document.getElementById("7"+i).style.cursor = "pointer";
 }
 
 
-var arr = ["44-24","21-41","23-32","75-65","65-55","27-37"];
-
-var replay = function(f) {
-	alert("in replay");
-  // var s = document.getElementById("div1"); //you could pass this element as a parameter as well
-   f = f || 0;
-   if(f < arr.length) {
-      str2=""+arr[f];
-alert("in main loop");
-		var res1 = str2.substring(0,2);
-		var res2 = str2.substring(3,5);
-
-			var xyx=document.getElementById(res1).innerHTML;
-			document.getElementById(res2).innerHTML=xyx;
-			document.getElementById(res1).innerHTML="";
-
-      f++;
-      if(f==arr.length)
-         alert("over");
-      //create a pause of 2 seconds.
-      setTimeout(function() { replay(f) }, 2000);          
-   }
-}
-
-
-
 function myglobal(obj)
 {
 
 	var tempID="";
-		for(i=1;i<=8;i++)
-		{
-			for(j=1;j<=8;j++)
-				{
+		for(i=1;i<=8;i++){
+			for(j=1;j<=8;j++){
 					tempID=""+i+j;
 				document.getElementById(tempID).removeAttribute("style");
 				
@@ -158,8 +129,7 @@ var divy=parseInt(divid.charAt(1));
 var tds=document.getElementById(divid).firstChild.name;
 colorType=tds.charAt(1);
 
-if(validatecolor=="m" || validatecolor !=colorType)
-{
+if(validatecolor=="m" || validatecolor !=colorType){
 myMove(tds,divx,divy);
 
 }
@@ -184,15 +154,12 @@ var oldname=document.getElementById(target_divid).firstChild.name;
 		document.getElementById(divid).innerHTML="";
 		validatecolor=colorType;
 		var tempID="";
-		for(i=1;i<=8;i++)
-		{
-			for(j=1;j<=8;j++)
-				{
+		for(i=1;i<=8;i++){
+			for(j=1;j<=8;j++){
 					tempID=""+i+j;
 				document.getElementById(tempID).removeAttribute("style");
 				document.getElementById(tempID).removeAttribute("onclick");	
-				if(!isEmpty(i,j))
-				{
+				if(!isEmpty(i,j)){
 				document.getElementById(tempID).setAttribute("onclick","myglobal(this)");
 				document.getElementById(tempID).style.cursor = "pointer";
 				}
@@ -200,12 +167,14 @@ var oldname=document.getElementById(target_divid).firstChild.name;
 		}
 
 		}
-         if(oldname=="kw")
-          {
+
+		move.push(target_divid+"-"+divid);
+
+
+         if(oldname=="kw"){
           	alert("Black Win");
           }
-          else if(oldname=="kb")
-           {
+          else if(oldname=="kb"){
           	alert("White Win");
           }
 
@@ -214,43 +183,36 @@ var oldname=document.getElementById(target_divid).firstChild.name;
 function myMove(tds,divx,divy)
 {
 	//alert("in myMove");
-	if(tds=="rw"|tds=="rb")
-	{
+	if(tds=="rw"|tds=="rb"){
 		//alert("in if");
 		rmoves(divx,divy,tds);
 	}
 		//for bishop
-if(tds=="bw"|tds=="bb")
-{
+if(tds=="bw"|tds=="bb"){
 ////alert("in if");
 bmoves(divx,divy,tds);
 }
 //for queen
-	if(tds=="qw"|tds=="qb")
-	{
+	if(tds=="qw"|tds=="qb"){
 		////alert("in if");
 		rmoves(divx,divy,tds);
 		bmoves(divx,divy,tds);
 	}
 	//for knight
-	if(tds=="hw"|tds=="hb")
-	{
+	if(tds=="hw"|tds=="hb"){
 		//alert("in hmoves");
 		hmoves(divx,divy,tds);
 	}
 	//for pawn
-	if(tds=="pb")
-	{
+	if(tds=="pb"){
 		//alert("in pmoves");
 		pbmoves(divx,divy,tds);
 	}
-	if(tds=="pw")
-	{
+	if(tds=="pw"){
 		//alert("in pmoves");
 		pwmoves(divx,divy,tds);
 	}
-	if(tds=="kw" | tds=="kb")
-	{
+	if(tds=="kw" | tds=="kb"){
 		//alert("in kmoves");
 		kmoves(divx,divy,tds);
 	}
@@ -258,36 +220,29 @@ bmoves(divx,divy,tds);
 
 function pbmoves(divx,divy,tds)
 {
-if(divx=="2")
-{
+if(divx=="2"){
 	if(isEmpty(divx+1,divy))
 	{
 	highlight(divx+1,divy);
     }
     
-    if((isEmpty(divx+2,divy))&&(isEmpty(divx+1,divy)))
-    {
+    if((isEmpty(divx+2,divy))&&(isEmpty(divx+1,divy))){
 	highlight(divx+2,divy);
     }
    }  
   else
   {
-  	if(isEmpty(divx+1,divy))
-  	{
+  	if(isEmpty(divx+1,divy)){
   		highlight(divx+1,divy);
   	}
   }
-  if(((divx+1)>0)&&((divx+1)<=8)&&((divy-1)>0)&&((divy-1)<=8))
-  {
-  if(!(isEmpty(divx+1,divy-1)) && (!isFriend(divx+1,divy-1,tds)))
-  {
+  if(((divx+1)>0)&&((divx+1)<=8)&&((divy-1)>0)&&((divy-1)<=8)){
+  if(!(isEmpty(divx+1,divy-1)) && (!isFriend(divx+1,divy-1,tds))){
   	highlight(divx+1,divy-1);
   }
 }
-   if(((divx+1)>0)&&((divx+1)<=8)&&((divy+1)>0)&&((divy+1)<=8))
-   {
-   if(!(isEmpty(divx+1,divy+1)) && (!isFriend(divx+1,divy+1,tds)))
-  {
+   if(((divx+1)>0)&&((divx+1)<=8)&&((divy+1)>0)&&((divy+1)<=8)){
+   if(!(isEmpty(divx+1,divy+1)) && (!isFriend(divx+1,divy+1,tds))){
   	highlight(divx+1,divy+1);
   }
 }
@@ -295,36 +250,28 @@ if(divx=="2")
 //for pawns white
 function pwmoves(divx,divy,tds)
 {
-if(divx=="7")
-{
-	if(isEmpty(divx-1,divy))
-	{
+if(divx=="7"){
+	if(isEmpty(divx-1,divy)){
 	highlight(divx-1,divy);
     }
     
-    if((isEmpty(divx-2,divy))&&(isEmpty(divx-1,divy)))
-    {
+    if((isEmpty(divx-2,divy))&&(isEmpty(divx-1,divy))){
 	highlight(divx-2,divy);
     }
    }  
   else
   {
-  	if(isEmpty(divx-1,divy))
-  	{
+  	if(isEmpty(divx-1,divy)){
   		highlight(divx-1,divy);
   	}
   }
-  if(((divx-1)>0)&&((divx-1)<=8)&&((divy-1)>0)&&((divy-1)<=8))
-  {
-  if(!(isEmpty(divx-1,divy-1)) && (!isFriend(divx-1,divy-1,tds)))
-  {
+  if(((divx-1)>0)&&((divx-1)<=8)&&((divy-1)>0)&&((divy-1)<=8)){
+  if(!(isEmpty(divx-1,divy-1)) && (!isFriend(divx-1,divy-1,tds))){
   	highlight(divx-1,divy-1);
   }
 }
-   if(((divx-1)>0)&&((divx-1)<=8)&&((divy+1)>0)&&((divy+1)<=8))
-   {
-   if(!(isEmpty(divx-1,divy+1)) && (!isFriend(divx-1,divy+1,tds)))
-  {
+   if(((divx-1)>0)&&((divx-1)<=8)&&((divy+1)>0)&&((divy+1)<=8)){
+   if(!(isEmpty(divx-1,divy+1)) && (!isFriend(divx-1,divy+1,tds))){
   	highlight(divx-1,divy+1);
   }
 }
@@ -335,17 +282,14 @@ function rmoves(divx, divy,tds)
 {
 	////alert("in rmoves");
 	//for horizontal right
-	for(i=(divy+1);i<=8;i++)
-	{
+	for(i=(divy+1);i<=8;i++){
 		////alert("in for");
-		if(isEmpty(divx,i))
-		{
+		if(isEmpty(divx,i)){
 			highlight(divx,i);
 		}
 		else
 		{
-			if(isFriend(divx,i,tds))
-			{
+			if(isFriend(divx,i,tds)){
 				break;
 			}
 			else
@@ -360,61 +304,49 @@ function rmoves(divx, divy,tds)
 	for(i=(divy-1);i>0;i--)
 	{
 		////alert("in reverse for");
-		if(isEmpty(divx,i))
-		{
+		if(isEmpty(divx,i)){
 
 			highlight(divx,i);
 		}
 		else
 		{
-			if(isFriend(divx,i,tds))
-			{
+			if(isFriend(divx,i,tds)){
 				break;
 			}
-			else
-			{
+			else{
 				highlight(divx,i);
 				break;
 			}
 		}
 	}
 
-	for(i=(divx+1);i<=8;i++)
-	{
+	for(i=(divx+1);i<=8;i++){
 		////alert("in for");
-		if(isEmpty(i,divy))
-		{
+		if(isEmpty(i,divy)){
 			highlight(i,divy);
 		}
 		else
 		{
-			if(isFriend(i,divy,tds))
-			{
+			if(isFriend(i,divy,tds)){
 				break;
 			}
-			else
-			{
+			else{
 				highlight(i,divy);
 				break;
 			}
 		}
 	}
 
-	for(i=(divx-1);i>0;i--)
-	{
+	for(i=(divx-1);i>0;i--){
 		////alert("in for");
-		if(isEmpty(i,divy))
-		{
+		if(isEmpty(i,divy)){
 			highlight(i,divy);
 		}
-		else
-		{
-			if(isFriend(i,divy,tds))
-			{
+		else{
+			if(isFriend(i,divy,tds)){
 				break;
 			}
-			else
-			{
+			else{
 				highlight(i,divy);
 				break;
 			}
@@ -428,45 +360,35 @@ function rmoves(divx, divy,tds)
 function bmoves(divx, divy,tds)
 {
 ////alert("in rmoves");
-for(i=(divx+1),j=(divy+1);i<=8 && j<=8;i++,j++)
-{
+for(i=(divx+1),j=(divy+1);i<=8 && j<=8;i++,j++){
 //alert(i);
 //alert(j);
-if(isEmpty(i,j))
-{
+if(isEmpty(i,j)){
 highlight(i,j);
 }
-else
-{
-if(isFriend(i,j,tds))
-{
+else{
+if(isFriend(i,j,tds)){
 break;
 }
-else
-{
+else{
 highlight(i,j); 
 break;
 }
 }
 }
-for(i=(divx-1),j=(divy-1);i>0 && j>0;i--,j--)
-{
+for(i=(divx-1),j=(divy-1);i>0 && j>0;i--,j--){
 ////alert("in for");
 //alert(i);
 //alert(j);
 
-if(isEmpty(i,j))
-{
+if(isEmpty(i,j)){
 highlight(i,j);
 }
-else
-{
-if(isFriend(i,j,tds))
-{
+else{
+if(isFriend(i,j,tds)){
 break;
 }
-else
-{
+else{
 highlight(i,j);
 break;
 }
@@ -474,38 +396,31 @@ break;
 }
 //for vertical
 //alert("in 3rd for");
-for(k=(divx+1),l=(divy-1);k<=8 && l>0;k++,l--)
-	{
+for(k=(divx+1),l=(divy-1);k<=8 && l>0;k++,l--){
 		//alert(k);
 //alert(l);
 
 		////alert("in for");
-		if(isEmpty(k,l))
-		{
+		if(isEmpty(k,l)){
 			highlight(k,l);
 		}
-		else
-		{
-			if(isFriend(k,l,tds))
-			{
+		else{
+			if(isFriend(k,l,tds)){
 				break;
 			}
-			else
-			{
+			else{
 				highlight(k,l);
 				break;
 			}
 		}
 	}
 //alert("in 4th for");
-	for(i=(divx-1),j=(divy+1);i>0 && j<=8;i--,j++)
-	{
+	for(i=(divx-1),j=(divy+1);i>0 && j<=8;i--,j++){
 		////alert("in for");
 		//alert(i);
 //alert(j);
 
-		if(isEmpty(i,j))
-		{
+		if(isEmpty(i,j)){
 			highlight(i,j);
 		}
 		else
@@ -710,4 +625,45 @@ function highlight(divx,i)
 	document.getElementById(divstr).style.cursor = "pointer";
 }
 
+function rset()
+{
+	window.location.reload();
+}
+function callreplay()
+{
+	var s="";
+	for(i=3;i<=6;i++)
+	{
+		for(j=1;j<=8;j++)
+		{
+			s=""+i+j;
+			document.getElementById(s).innerHTML="";
+		}
+	}
+	init();
+	replay();
+}
 
+
+var replay = function(f) {
+	//alert("in replay");
+  // var s = document.getElementById("div1"); //you could pass this element as a parameter as well
+   f = f || 0;
+   if(f < move.length) {
+      str2=""+move[f];
+//alert("in main loop");
+		var res1 = str2.substring(0,2);
+		var res2 = str2.substring(3,5);
+            //alert(""+res1+" "+res2+" "+str2);
+			var preposition=document.getElementById(res2).innerHTML;
+			//alert(xyx);
+			document.getElementById(res1).innerHTML=preposition;
+			document.getElementById(res2).innerHTML="";
+
+      f++;
+      if(f==move.length)
+         alert("over");
+      //create a pause of 2 seconds.
+      setTimeout(function() { replay(f) }, 2000);          
+   }
+}
