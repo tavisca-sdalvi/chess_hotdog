@@ -112,7 +112,7 @@ document.getElementById("32").innerHTML=bishop_white;
 }
 
 
-var arr = ["44-24","21-41","23-32","75-65","65-55","27-37"];
+var arr = ["24-34","21-41","23-32","75-65","65-55","27-37"];
 
 var replay = function(f) {
 	alert("in replay");
@@ -132,7 +132,7 @@ alert("in main loop");
       if(f==arr.length)
          alert("over");
       //create a pause of 2 seconds.
-      setTimeout(function() { replay(f) }, 2000);          
+      setTimeout(function() { replay(f) }, 1000);          
    }
 }
 
