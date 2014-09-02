@@ -146,7 +146,7 @@ function myglobal(obj)
 
 		}
 
-alert("global");
+//alert("global");
 
 //alert("global");
 
@@ -178,6 +178,8 @@ function myput(obj)
 	var divx=parseInt(target_divid.charAt(0));
 	var divy=parseInt(target_divid.charAt(1));
 	
+var oldname=document.getElementById(target_divid).firstChild.name;
+
 		document.getElementById(target_divid).innerHTML=document.getElementById(divid).innerHTML;
 		document.getElementById(divid).innerHTML="";
 		validatecolor=colorType;
@@ -192,12 +194,20 @@ function myput(obj)
 				if(!isEmpty(i,j))
 				{
 				document.getElementById(tempID).setAttribute("onclick","myglobal(this)");
+				document.getElementById(tempID).style.cursor = "pointer";
 				}
 				
 		}
 
 		}
-
+         if(oldname=="kw")
+          {
+          	alert("Black Win");
+          }
+          else if(oldname=="kb")
+           {
+          	alert("White Win");
+          }
 
 }
 
@@ -697,6 +707,7 @@ function highlight(divx,i)
 	var divstr=""+divx+i;
 	document.getElementById(divstr).setAttribute("style","border:2px solid red;");
 	document.getElementById(divstr).setAttribute("onclick","myput(this)");
+	document.getElementById(divstr).style.cursor = "pointer";
 }
 
 
