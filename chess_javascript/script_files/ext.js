@@ -147,6 +147,8 @@ function myput(obj)
 	////alert(target_divid);
 	var divx=parseInt(target_divid.charAt(0));
 	var divy=parseInt(target_divid.charAt(1));
+
+	var oldname=document.getElementById(target_divid).firstChild.name;
 	
 var oldname=document.getElementById(target_divid).firstChild.name;
 
@@ -161,12 +163,13 @@ var oldname=document.getElementById(target_divid).firstChild.name;
 				document.getElementById(tempID).removeAttribute("onclick");	
 				if(!isEmpty(i,j)){
 				document.getElementById(tempID).setAttribute("onclick","myglobal(this)");
-				document.getElementById(tempID).style.cursor = "pointer";
+				//document.getElementById(tempID).style.cursor = "pointer";
 				}
 				
 		}
 
 		}
+
 
 		move.push(target_divid+"-"+divid);
 
@@ -178,6 +181,9 @@ var oldname=document.getElementById(target_divid).firstChild.name;
           	alert("White Win");
           }
 
+
+
+        
 }
 
 function myMove(tds,divx,divy)
@@ -622,7 +628,7 @@ function highlight(divx,i)
 	var divstr=""+divx+i;
 	document.getElementById(divstr).setAttribute("style","border:2px solid red;");
 	document.getElementById(divstr).setAttribute("onclick","myput(this)");
-	document.getElementById(divstr).style.cursor = "pointer";
+	//document.getElementById(divstr).style.cursor = "pointer";
 }
 
 function rset()
