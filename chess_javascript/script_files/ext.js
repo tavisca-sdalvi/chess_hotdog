@@ -117,12 +117,8 @@ function myglobal(obj)
 
 		}
 
-//alert("global");
-
-//alert("global");
-
 divid=obj.id;
-//alert(divid);
+
 var divx=parseInt(divid.charAt(0));
 var divy=parseInt(divid.charAt(1));
 
@@ -142,9 +138,8 @@ else
 
 function myput(obj)
 {
-	////alert("hello");
 	var target_divid=obj.id;
-	////alert(target_divid);
+	
 	var divx=parseInt(target_divid.charAt(0));
 	var divy=parseInt(target_divid.charAt(1));
 
@@ -163,7 +158,7 @@ var oldname=document.getElementById(target_divid).firstChild.name;
 				document.getElementById(tempID).removeAttribute("onclick");	
 				if(!isEmpty(i,j)){
 				document.getElementById(tempID).setAttribute("onclick","myglobal(this)");
-				//document.getElementById(tempID).style.cursor = "pointer";
+				
 				}
 				
 		}
@@ -188,38 +183,35 @@ var oldname=document.getElementById(target_divid).firstChild.name;
 
 function myMove(tds,divx,divy)
 {
-	//alert("in myMove");
+	
 	if(tds=="rw"|tds=="rb"){
-		//alert("in if");
 		rmoves(divx,divy,tds);
 	}
-		//for bishop
-if(tds=="bw"|tds=="bb"){
-////alert("in if");
-bmoves(divx,divy,tds);
-}
-//for queen
+		
+    if(tds=="bw"|tds=="bb"){
+           bmoves(divx,divy,tds);
+    }
+
 	if(tds=="qw"|tds=="qb"){
-		////alert("in if");
 		rmoves(divx,divy,tds);
 		bmoves(divx,divy,tds);
 	}
-	//for knight
+	
 	if(tds=="hw"|tds=="hb"){
-		//alert("in hmoves");
+		
 		hmoves(divx,divy,tds);
 	}
-	//for pawn
+	
 	if(tds=="pb"){
-		//alert("in pmoves");
+		
 		pbmoves(divx,divy,tds);
 	}
 	if(tds=="pw"){
-		//alert("in pmoves");
+		
 		pwmoves(divx,divy,tds);
 	}
 	if(tds=="kw" | tds=="kb"){
-		//alert("in kmoves");
+		
 		kmoves(divx,divy,tds);
 	}
 }
@@ -286,10 +278,9 @@ if(divx=="7"){
 
 function rmoves(divx, divy,tds)
 {
-	////alert("in rmoves");
-	//for horizontal right
+	
 	for(i=(divy+1);i<=8;i++){
-		////alert("in for");
+		
 		if(isEmpty(divx,i)){
 			highlight(divx,i);
 		}
@@ -306,10 +297,10 @@ function rmoves(divx, divy,tds)
 		}
 	}
 
-	//for horizontal left
+	
 	for(i=(divy-1);i>0;i--)
 	{
-		////alert("in reverse for");
+		
 		if(isEmpty(divx,i)){
 
 			highlight(divx,i);
@@ -327,7 +318,7 @@ function rmoves(divx, divy,tds)
 	}
 
 	for(i=(divx+1);i<=8;i++){
-		////alert("in for");
+		
 		if(isEmpty(i,divy)){
 			highlight(i,divy);
 		}
@@ -344,7 +335,7 @@ function rmoves(divx, divy,tds)
 	}
 
 	for(i=(divx-1);i>0;i--){
-		////alert("in for");
+		
 		if(isEmpty(i,divy)){
 			highlight(i,divy);
 		}
@@ -362,13 +353,12 @@ function rmoves(divx, divy,tds)
 
 	
 }
-//for bishop 
+
 function bmoves(divx, divy,tds)
 {
-////alert("in rmoves");
+
 for(i=(divx+1),j=(divy+1);i<=8 && j<=8;i++,j++){
-//alert(i);
-//alert(j);
+
 if(isEmpty(i,j)){
 highlight(i,j);
 }
@@ -383,9 +373,7 @@ break;
 }
 }
 for(i=(divx-1),j=(divy-1);i>0 && j>0;i--,j--){
-////alert("in for");
-//alert(i);
-//alert(j);
+
 
 if(isEmpty(i,j)){
 highlight(i,j);
@@ -400,14 +388,10 @@ break;
 }
 }
 }
-//for vertical
-//alert("in 3rd for");
-for(k=(divx+1),l=(divy-1);k<=8 && l>0;k++,l--){
-		//alert(k);
-//alert(l);
 
-		////alert("in for");
-		if(isEmpty(k,l)){
+
+for(k=(divx+1),l=(divy-1);k<=8 && l>0;k++,l--){
+	if(isEmpty(k,l)){
 			highlight(k,l);
 		}
 		else{
@@ -420,12 +404,9 @@ for(k=(divx+1),l=(divy-1);k<=8 && l>0;k++,l--){
 			}
 		}
 	}
-//alert("in 4th for");
-	for(i=(divx-1),j=(divy+1);i>0 && j<=8;i--,j++){
-		////alert("in for");
-		//alert(i);
-//alert(j);
 
+	for(i=(divx-1),j=(divy+1);i>0 && j<=8;i--,j++){
+		
 		if(isEmpty(i,j)){
 			highlight(i,j);
 		}
@@ -446,7 +427,7 @@ for(k=(divx+1),l=(divy-1);k<=8 && l>0;k++,l--){
 	//for knight
 function hmoves(divx, divy,tds)
 {
-	//alert("in hmove");
+	
 	if(((divx-2)>0)&&((divx-2)<=8)&&((divy+1)>0)&&((divy+1)<=8))
 	{
 		if(isEmpty(divx-2,divy+1))
@@ -546,7 +527,7 @@ highlight(divx-2,divy-1);
 
 function kmoves(divx,divy,tds)
 {
-	//alert("in kmoves");
+	
 	for(i=divx-1;i<=divx+1;i++)
 	{
 		for(j=divy-1;j<=divy+1;j++)
@@ -555,22 +536,18 @@ function kmoves(divx,divy,tds)
 				continue;
 			else
 			{
-				if(i==0 | j==0 |i==9|j==9)
-				{
-					//alert("i=0 or j=0");
+				if(i==0 | j==0 |i==9|j==9){
+					
 					continue;
 				}
-				else
-				{
-					if(isEmpty(i,j))
-					{
-						//alert("i,j is empty");
+				else{
+					if(isEmpty(i,j)){
+						
 						highlight(i,j);
 					}
 					else
-						if(!isFriend(i,j,tds))
-						{
-							//alert("i,j is enemy");
+						if(!isFriend(i,j,tds)){
+							
 						highlight(i,j);
 						
 						}
@@ -578,26 +555,23 @@ function kmoves(divx,divy,tds)
 			}
 
 
-				//highlight(i,j);
+				
 		}
 	}
 }
 
 function isEmpty (divx,i)
 {
-	////alert("in isempty");
+	
 	var divstr=""+divx+i;
 	var imgvar=document.getElementById(divstr).getElementsByTagName("img")[0];
-	////alert(imgvar);
-	if(imgvar)
-	{
-		////alert("imgvar has some value");
+	
+	if(imgvar){
+		
 		return false;
 	}
-	else
-	{
-		////alert("imgvar has no value");
-			return true;
+	else{
+		return true;
 	}
 		
 }
@@ -652,24 +626,18 @@ function callreplay()
 
 
 var replay = function(f) {
-	//alert("in replay");
-  // var s = document.getElementById("div1"); //you could pass this element as a parameter as well
-   f = f || 0;
-   if(f < move.length) {
-      str2=""+move[f];
-//alert("in main loop");
-		var res1 = str2.substring(0,2);
-		var res2 = str2.substring(3,5);
-            //alert(""+res1+" "+res2+" "+str2);
-			var preposition=document.getElementById(res2).innerHTML;
-			//alert(xyx);
-			document.getElementById(res1).innerHTML=preposition;
-			document.getElementById(res2).innerHTML="";
+	f = f || 0;
+    if(f < move.length) {
+        str2=""+move[f];
+        var res1 = str2.substring(0,2);
+		var res2 = str2.substring(3,5);   
+		var preposition=document.getElementById(res2).innerHTML;	
+		document.getElementById(res1).innerHTML=preposition;
+		document.getElementById(res2).innerHTML="";
 
-      f++;
-      if(f==move.length)
-         alert("over");
-      //create a pause of 2 seconds.
-      setTimeout(function() { replay(f) }, 2000);          
+        f++;
+        if(f==move.length)
+        alert("over");
+        setTimeout(function() { replay(f) }, 2000);          
    }
 }
